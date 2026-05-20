@@ -4,12 +4,13 @@ import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
-  apiKey: 'YOUR_API_KEY',
-  authDomain: 'YOUR_PROJECT_ID.firebaseapp.com',
-  projectId: 'YOUR_PROJECT_ID',
-  storageBucket: 'YOUR_PROJECT_ID.appspot.com',
-  messagingSenderId: 'YOUR_MESSAGING_SENDER_ID',
-  appId: 'YOUR_APP_ID',
+  apiKey: "AIzaSyDFbvK8JErot7-YIJcE31sW0lnHXFln20U",
+  authDomain: "valentine-s-32e58.firebaseapp.com",
+  projectId: "valentine-s-32e58",
+  storageBucket: "valentine-s-32e58.firebasestorage.app",
+  messagingSenderId: "427250729053",
+  appId: "1:427250729053:web:ee0abc55b3fa357b004db4",
+  measurementId: "G-Z852B5THGB"
 };
 
 // Initialise Firebase app (singleton)
