@@ -11,7 +11,7 @@ import { StatusBar } from 'expo-status-bar';
 import { Ionicons } from '@expo/vector-icons';
 import VehicleCard from '../../components/checkin/VehicleCard';
 import LoadingSpinner from '../../components/common/LoadingSpinner';
-import useVehicles from '../../hooks/useVehicles';
+import useVehicles from '../../hooks/useVehicle';
 import { COLORS } from '../../constants/colors';
 
 const VehicleListScreen = ({ navigation, route }) => {

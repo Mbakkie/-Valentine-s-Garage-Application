@@ -15,7 +15,7 @@ import {
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { db, storage } from '../config/firebase';
 import { createCheckInModel } from '../models/models';
-import { DEFAULT_CHECKLIST } from '../constants/checklistItems';
+import { DEFAULT_CHECKLIST } from '../constants/ChecklistItems';
 import { createServiceTaskModel } from '../models/models';
 
 const CHECK_INS = 'checkIns';

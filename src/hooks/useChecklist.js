@@ -9,7 +9,10 @@ const useChecklist = (checkInId) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!checkInId) return;
+    if (!checkInId) {
+      setLoading(false);
+      return;
+    }
 
     const unsubscribe = subscribeToTasks(checkInId, (updatedTasks) => {
       setTasks(updatedTasks);

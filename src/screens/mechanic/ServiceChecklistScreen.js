@@ -17,8 +17,23 @@ import { updateCheckInStatus } from '../../services/vehicleService';
 import { COLORS } from '../../constants/colors';
 
 const ServiceChecklistScreen = ({ navigation, route }) => {
-  const { checkInId, truckPlate, user } = route.params;
+  const { checkInId, truckPlate, user } = route.params || {};
   const { tasks, loading, grouped, stats } = useChecklist(checkInId);
+
+  if (!checkInId) {
+    return <LoadingSpinner message="Missing service checklist information. Please return and select a vehicle again." />;
+  }
+
+  const finaliseCheckIn = async () => {
+    try {
+      await updateCheckInStatus(checkInId, 'completed');
+      Alert.alert('Service Complete', `${truckPlate} has been marked as serviced.`, [
+        { text: 'OK', onPress: () => navigation.goBack() },
+      ]);
+    } catch {
+      Alert.alert('Error', 'Could not update vehicle status.');
+    }
+  };
 
   const handleToggle = useCallback(
     async (task) => {
@@ -61,17 +76,6 @@ const ServiceChecklistScreen = ({ navigation, route }) => {
       );
     } else {
       finaliseCheckIn();
-    }
-  };
-
-  const finaliseCheckIn = async () => {
-    try {
-      await updateCheckInStatus(checkInId, 'completed');
-      Alert.alert('Service Complete', `${truckPlate} has been marked as serviced.`, [
-        { text: 'OK', onPress: () => navigation.goBack() },
-      ]);
-    } catch {
-      Alert.alert('Error', 'Could not update vehicle status.');
     }
   };
 
