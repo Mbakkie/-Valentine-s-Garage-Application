@@ -87,7 +87,8 @@ src/
 ## Important Notes
 
 - The app expects valid PNG assets in `assets/images/` for the Expo icon, splash, favicon, and adaptive icon.
-- If Expo Web fails with a `jimp-compact` CRC PNG error, re-save the project PNG assets and restart with `--clear`.
+- The current project already includes regenerated, valid PNG assets in `assets/images/`.
+- If Expo Web fails with a `jimp-compact` CRC PNG error, delete `.expo`, then restart with `--clear`.
 - If Expo prompts for a new port, allow it or specify one manually.
 
 ## Testing
