@@ -14,10 +14,6 @@ import { StatusBar } from 'expo-status-bar';
 import { Ionicons } from '@expo/vector-icons';
 import Card from '../../components/common/Card';
 import { COLORS } from '../../constants/colors';
-import {
-  getEmployeeActivityReport,
-  getAllCheckIns,
-} from '../../services/reportService';
 import { getAllCheckIns as fetchAllCheckIns } from '../../services/vehicleService';
 import { formatDate, formatOdometer } from '../../utils/formatters';
 import { VEHICLE_CONDITIONS } from '../../constants/strings';

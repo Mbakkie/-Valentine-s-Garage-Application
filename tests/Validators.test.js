@@ -6,7 +6,7 @@ import {
   validatePlate,
   validateCheckInForm,
   isFormValid,
-} from '../../src/utils/validators';
+} from '../src/utils/validators';
 
 describe('validateEmail', () => {
   it('returns null for a valid email', () => {

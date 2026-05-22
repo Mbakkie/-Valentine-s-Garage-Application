@@ -7,24 +7,18 @@ const useVehicles = () => {
   const [error, setError]       = useState(null);
 
   useEffect(() => {
-    const unsubscribe = subscribeToActiveCheckIns((data) => {
+  let unsubscribe;
+  try {
+    unsubscribe = subscribeToActiveCheckIns((data) => {
       setVehicles(data);
       setLoading(false);
     });
-
-    const handleError = (err) => {
-      setError(err.message);
-      setLoading(false);
-    };
-
-    try {
-    } catch (err) {
-      handleError(err);
-    }
-
-    return unsubscribe;
-  }, []);
-
+  } catch (err) {
+    setError(err.message);
+    setLoading(false);
+  }
+  return () => unsubscribe?.();
+}, []);
   return { vehicles, loading, error };
 };
 

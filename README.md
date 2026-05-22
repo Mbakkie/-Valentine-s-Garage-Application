@@ -39,7 +39,31 @@ npm install
 
 If you see Expo compatibility warnings, use the package versions defined in `package.json`.
 
-## Run the app
+## Run the app (Native Kotlin/Compose)
+
+The app has been rewritten in native Kotlin using Jetpack Compose.
+
+### Prerequisites (Native)
+
+- Android Studio Iguana or newer
+- Kotlin 1.9.0+
+- `google-services.json` placed in `android/app/`
+- **Accept Android SDK Licenses**: Run `sdkmanager --licenses` in your terminal if you haven't already.
+
+### Build via Command Line
+
+```bash
+cd android
+./gradlew assembleDebug
+```
+
+### Build via Android Studio
+
+1. Open the `android/` folder in Android Studio.
+2. Wait for Gradle sync to complete.
+3. Select the `app` configuration and press **Run**.
+
+## Run the app (Legacy React Native)
 
 ### Web
 
