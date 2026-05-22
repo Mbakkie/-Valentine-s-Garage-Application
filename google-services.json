@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "427250729053",
+    "project_id": "valentine-s-32e58",
+    "storage_bucket": "valentine-s-32e58.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:427250729053:android:2923297b9b0ced9a004db4",
+        "android_client_info": {
+          "package_name": "com.mbakkiedev.valentine"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkRKyzzoLQE-SgualZx-W3Cpktkj4w7OI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

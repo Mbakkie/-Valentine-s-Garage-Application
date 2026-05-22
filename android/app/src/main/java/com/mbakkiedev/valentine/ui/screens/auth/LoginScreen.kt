@@ -30,7 +30,7 @@ import com.mbakkiedev.valentine.ui.theme.*
 import kotlinx.coroutines.launch
 
 @Composable
-fun LoginScreen(onLoginSuccess: (User) -> Unit) {
+fun LoginScreen(onLoginSuccess: (User) -> Unit, onNavigateToSignUp: () -> Unit = {}) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var loading by remember { mutableStateOf(false) }
@@ -49,13 +49,15 @@ fun LoginScreen(onLoginSuccess: (User) -> Unit) {
         scope.launch {
             try {
                 val user = authRepository.login(email.trim(), password)
+                // login should never return null now, but we'll check just in case
                 if (user != null) {
                     onLoginSuccess(user)
                 } else {
-                    error = "Invalid credentials or profile not found"
+                    error = "DEBUG: AuthRepository returned NULL (Old code still running?)"
                 }
             } catch (e: Exception) {
-                error = "Login failed: ${e.message}"
+                android.util.Log.e("LoginScreen", "Login Error", e)
+                error = "Login failed: ${e.localizedMessage}"
             } finally {
                 loading = false
             }
@@ -183,6 +185,10 @@ fun LoginScreen(onLoginSuccess: (User) -> Unit) {
             textAlign = TextAlign.Center,
             lineHeight = 18.sp
         )
+
+        TextButton(onClick = onNavigateToSignUp) {
+            Text("Register (Debug)", color = Primary)
+        }
 
         Spacer(modifier = Modifier.height(48.dp))
     }

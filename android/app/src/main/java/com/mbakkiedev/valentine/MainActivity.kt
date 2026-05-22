@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.mbakkiedev.valentine.ui.screens.auth.LoginScreen
+import com.mbakkiedev.valentine.ui.screens.auth.SignUpScreen
 import com.mbakkiedev.valentine.ui.screens.mechanic.VehicleListScreen
 import com.mbakkiedev.valentine.ui.screens.mechanic.CheckInScreen
 import com.mbakkiedev.valentine.ui.screens.admin.AdminDashboardScreen
@@ -44,7 +45,7 @@ fun AppNavigation(authRepository: AuthRepository, vehicleRepository: VehicleRepo
         composable("login") {
             LoginScreen(
                 onLoginSuccess = { user ->
-                    if (user.role == "admin") {
+                    if (user.role.equals("admin", ignoreCase = true)) {
                         navController.navigate("admin_dashboard") {
                             popUpTo("login") { inclusive = true }
                         }
@@ -53,7 +54,15 @@ fun AppNavigation(authRepository: AuthRepository, vehicleRepository: VehicleRepo
                             popUpTo("login") { inclusive = true }
                         }
                     }
-                }
+                },
+                onNavigateToSignUp = { navController.navigate("signup") }
+            )
+        }
+
+        composable("signup") {
+            SignUpScreen(
+                onBack = { navController.popBackStack() },
+                onSuccess = { navController.popBackStack() }
             )
         }
 
@@ -62,7 +71,7 @@ fun AppNavigation(authRepository: AuthRepository, vehicleRepository: VehicleRepo
                 val uid = authRepository.getCurrentUserUid()
                 if (uid != null) {
                     val profile = authRepository.getUserProfile(uid)
-                    if (profile?.role == "admin") {
+                    if (profile?.role.equals("admin", ignoreCase = true)) {
                         navController.navigate("admin_dashboard") {
                             popUpTo("dashboard_bridge") { inclusive = true }
                         }

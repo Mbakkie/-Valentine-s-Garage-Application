@@ -54,7 +54,9 @@ class VehicleRepository {
 
         val listener = query.addSnapshotListener { snapshot, error ->
             if (error != null) {
-                close(error)
+                android.util.Log.e("VehicleRepository", "Firestore error: ${error.message}")
+                // Don't close the flow, just send an empty list and wait for next update
+                trySend(emptyList())
                 return@addSnapshotListener
             }
             val checkIns = snapshot?.toObjects(CheckIn::class.java) ?: emptyList()
