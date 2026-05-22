@@ -113,7 +113,8 @@ fun AppNavigation(authRepository: AuthRepository, vehicleRepository: VehicleRepo
             com.mbakkiedev.valentine.ui.screens.mechanic.ServiceChecklistScreen(
                 truckPlate = plate,
                 tasks = tasks,
-                onTaskToggle = { task ->
+                onTaskToggle = { _ ->
+                    // Task toggle logic would go here
                 },
                 onFinishClick = {
                     scope.launch {

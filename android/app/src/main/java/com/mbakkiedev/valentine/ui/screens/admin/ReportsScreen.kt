@@ -11,7 +11,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Info
@@ -54,7 +54,7 @@ fun ReportsScreen(onBack: () -> Unit) {
             ) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     IconButton(onClick = onBack) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = "Back", tint = TextPrimary)
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back", tint = TextPrimary)
                     }
                     Text(
                         text = "Reports",
@@ -78,7 +78,7 @@ fun ReportsScreen(onBack: () -> Unit) {
                 selectedTabIndex = activeTab,
                 containerColor = Surface,
                 contentColor = Primary,
-                divider = { Divider(color = Border) }
+                divider = { HorizontalDivider(color = Border) }
             ) {
                 Tab(
                     selected = activeTab == 0,
@@ -161,7 +161,7 @@ fun EmployeeCard(emp: EmployeeActivity) {
                 }
             }
 
-            Divider(modifier = Modifier.padding(vertical = 12.dp), color = Border)
+            HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp), color = Border)
 
             Text(text = "Vehicles worked on:", color = TextSecondary, fontSize = 12.sp, modifier = Modifier.padding(bottom = 8.dp))
             
@@ -313,12 +313,15 @@ fun FlowRow(
         }
         rows.add(currentRow)
 
-        val height = rows.sumOf { row -> row.maxOf { it.height } + crossAxisSpacing.roundToPx() }
+        val height = if (rows.isEmpty() || rows.all { it.isEmpty() }) 0 else rows.sumOf { row -> 
+            val rowMaxHeight = if (row.isEmpty()) 0 else row.maxOf { it.height }
+            rowMaxHeight + crossAxisSpacing.roundToPx() 
+        }
         layout(constraints.maxWidth, height) {
             var y = 0
             rows.forEach { row ->
                 var x = 0
-                val rowHeight = row.maxOf { it.height }
+                val rowHeight = if (row.isEmpty()) 0 else row.maxOf { it.height }
                 row.forEach { placeable ->
                     placeable.placeRelative(x, y)
                     x += placeable.width + mainAxisSpacing.roundToPx()

@@ -1,8 +1,9 @@
-package com.mbakkiedev.valentine
+package com.valentinegarage.app
 
 import org.junit.Test
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import com.mbakkiedev.valentine.data.model.User
+import com.mbakkiedev.valentine.utils.Constants
 
 class LocalTest {
     @Test
@@ -15,6 +16,6 @@ class LocalTest {
 
     @Test
     fun testConstants() {
-        assertEquals("Valentine's Garage", com.mbakkiedev.valentine.utils.Constants.APP_NAME)
+        assertEquals("Valentine's Garage", Constants.APP_NAME)
     }
 }
