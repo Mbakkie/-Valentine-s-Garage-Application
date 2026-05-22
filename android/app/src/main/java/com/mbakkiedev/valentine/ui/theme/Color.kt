@@ -2,19 +2,20 @@ package com.mbakkiedev.valentine.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Primary = Color(0xFFE8A020)
-val PrimaryDark = Color(0xFFC47B0A)
-val PrimaryLight = Color(0xFFF5C842)
+val Primary = Color(0xFFFF5722)
+val PrimaryDark = Color(0xFFBF360C)
+val PrimaryLight = Color(0xFFFF8A65)
 
-val Background = Color(0xFF0F0F0F)
-val Surface = Color(0xFF1C1C1C)
-val SurfaceElevated = Color(0xFF252525)
-val Border = Color(0xFF333333)
+val Background = Color(0xFF120D0B)
+val Surface = Color(0xFF1C1412)
+val SurfaceElevated = Color(0xFF241B18)
+val Border = Color(0xFF332622)
 
-val TextPrimary = Color(0xFFF5F5F5)
-val TextSecondary = Color(0xFFA0A0A0)
-val TextDisabled = Color(0xFF555555)
+val TextPrimary = Color(0xFFFFF3E0)
+val TextSecondary = Color(0xFFBDB1A8)
+val TextDisabled = Color(0xFF6D5F5A)
 
+val Secondary = Color(0xFFFFB300)
 val Success = Color(0xFF27AE60)
 val Warning = Color(0xFFF39C12)
 val Error = Color(0xFFE74C3C)
